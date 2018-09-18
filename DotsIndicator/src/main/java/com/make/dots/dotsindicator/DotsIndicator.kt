@@ -13,7 +13,7 @@ import android.util.AttributeSet
 import android.view.View
 
 class DotsIndicator : LinearLayout {
-    private var mViewpager: ViewPager? = null
+    lateinit var mViewpager: ViewPager
     private var mIndicatorMargin = -1
     private var mIndicatorWidth = -1
     private var mIndicatorHeight = -1
@@ -25,7 +25,7 @@ class DotsIndicator : LinearLayout {
         override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
         override fun onPageSelected(position: Int) {
-            if (mViewpager!!.adapter == null || mViewpager!!.adapter!!.count <= 0) return
+            if (mViewpager.adapter == null || mViewpager.adapter?.count ?: 0 <= 0) return
             if (mLastPosition >= 0) getChildAt(mLastPosition)?.setBackgroundResource(mIndicatorUnselectedBackgroundResId)
             getChildAt(position)?.setBackgroundResource(mIndicatorBackgroundResId)
             mLastPosition = position
@@ -37,12 +37,11 @@ class DotsIndicator : LinearLayout {
     val dataSetObserver: DataSetObserver = object : DataSetObserver() {
         override fun onChanged() {
             super.onChanged()
-            if (mViewpager == null) return
-            val newCount = mViewpager!!.adapter!!.count
+            val newCount = mViewpager.adapter?.count ?: 0
             val currentCount = childCount
             mLastPosition = when {
                 newCount == currentCount -> return
-                mLastPosition < newCount -> mViewpager!!.currentItem
+                mLastPosition < newCount -> mViewpager.currentItem
                 else -> -1
             }
             createIndicators()
@@ -87,29 +86,29 @@ class DotsIndicator : LinearLayout {
     }
 
     private fun checkIndicatorConfig() {
-        mIndicatorWidth = if (mIndicatorWidth < 0) dip2px(DEFAULT_INDICATOR_WIDTH.toFloat()) else mIndicatorWidth
-        mIndicatorHeight = if (mIndicatorHeight < 0) dip2px(DEFAULT_INDICATOR_WIDTH.toFloat()) else mIndicatorHeight
-        mIndicatorMargin = if (mIndicatorMargin < 0) dip2px(DEFAULT_INDICATOR_WIDTH.toFloat()) else mIndicatorMargin
+        mIndicatorWidth = if (mIndicatorWidth < 0) dpTopx(DEFAULT_INDICATOR_WIDTH.toFloat()) else mIndicatorWidth
+        mIndicatorHeight = if (mIndicatorHeight < 0) dpTopx(DEFAULT_INDICATOR_WIDTH.toFloat()) else mIndicatorHeight
+        mIndicatorMargin = if (mIndicatorMargin < 0) dpTopx(DEFAULT_INDICATOR_WIDTH.toFloat()) else mIndicatorMargin
         mIndicatorBackgroundResId = if (mIndicatorBackgroundResId == 0) R.drawable.ic_dot_lightgrey else mIndicatorBackgroundResId
         mIndicatorUnselectedBackgroundResId = if (mIndicatorUnselectedBackgroundResId == 0) mIndicatorBackgroundResId else mIndicatorUnselectedBackgroundResId
     }
 
     fun setViewPager(viewPager: ViewPager) {
         mViewpager = viewPager
-        if (mViewpager != null && mViewpager!!.adapter != null) {
+        if (mViewpager.adapter != null) {
             mLastPosition = -1
             createIndicators()
-            mViewpager!!.removeOnPageChangeListener(mInternalPageChangeListener)
-            mViewpager!!.addOnPageChangeListener(mInternalPageChangeListener)
-            mInternalPageChangeListener.onPageSelected(mViewpager!!.currentItem)
+            mViewpager.removeOnPageChangeListener(mInternalPageChangeListener)
+            mViewpager.addOnPageChangeListener(mInternalPageChangeListener)
+            mInternalPageChangeListener.onPageSelected(mViewpager.currentItem)
         }
     }
 
     private fun createIndicators() {
         removeAllViews()
-        val count = mViewpager!!.adapter!!.count
+        val count = mViewpager.adapter?.count ?: 0
         if (count <= 0) return
-        val currentItem = mViewpager!!.currentItem
+        val currentItem = mViewpager.currentItem
         for (i in 0 until count) {
             if (currentItem == i) addIndicator(mIndicatorBackgroundResId)
             else addIndicator(mIndicatorUnselectedBackgroundResId)
@@ -128,12 +127,9 @@ class DotsIndicator : LinearLayout {
         indicator.layoutParams = lp
     }
 
-    fun dip2px(dpValue: Float): Int {
-        val scale = resources.displayMetrics.density
-        return (dpValue * scale + 0.5f).toInt()
-    }
+    fun dpTopx(dpValue: Float): Int = (dpValue * resources.displayMetrics.density + 0.5f).toInt()
 
     companion object {
-        private val DEFAULT_INDICATOR_WIDTH = 5
+        private const val DEFAULT_INDICATOR_WIDTH = 5
     }
 }
