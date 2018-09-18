@@ -57,4 +57,4 @@ imageViewPager.adapter?.registerDataSetObserver(dotsIndicator.dataSetObserver)
 ### Kotlin / Java
 DotsIndicator.setViewPager(ViewPager): This attaches the DotsIndicator with the View Pager
 
-Voila! You have implemented a simple dots indicator for your View Pager now!
+Voila! You have implemented a simple Dots indicator for your View Pager now!
