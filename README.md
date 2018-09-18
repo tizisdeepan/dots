@@ -5,7 +5,7 @@
 # Welcome to the dots wiki!
 
 ## What is Dots?
-### Dots is a library that helps in implementing a simple yet effective dots indicator for the View Pagers used in your android code. It combines the usage of observers and state drawables to indicate the current visible page's position in a badass way.
+Dots is a library that helps in implementing a simple yet effective dots indicator for the View Pagers used in your android code. It combines the usage of observers and state drawables to indicate the current visible page's position in a badass way.
 
 ## Implementation
 ### [1] In your app module gradle file
@@ -45,5 +45,17 @@ allprojects {
 dotsIndicator.setViewPager(imageViewPager)
 imageViewPager.adapter?.registerDataSetObserver(dotsIndicator.dataSetObserver)
 ```
+
+##Documentation
+
+###XML
+1. dot_drawable: Drawable that is used to indicated the current selected page
+2. dot_drawable_unselected: Drawable that is used to indicated the unselected pages
+3. dot_height: Height of the Dot indicator in dp
+4. dot_width: Width of the Dot indicator in dp
+5. dot_margin: Marginal spaces between the Dots
+
+###Kotlin / Java
+1. DotsIndicator.setViewPager(ViewPager): This attaches the DotsIndicator with the View Pager
 
 Voila! You have implemented a simple dots indicator for your View Pager now!
