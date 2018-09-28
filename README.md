@@ -8,14 +8,16 @@ Dots is a library that helps in implementing a simple yet effective dots indicat
 
 ## Implementation
 ### [1] In your app module gradle file
-```
+
+``` groovy
 dependencies {
     implementation 'com.github.tizisdeepan:dots:1.0.1'
 }
 ```
 
 ### [2] In your project level gradle file
-```
+
+``` groovy
 allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
@@ -47,13 +49,16 @@ imageViewPager.adapter?.registerDataSetObserver(dotsIndicator.dataSetObserver)
 
 ## Documentation
 ### XML
-1. dot_drawable: Drawable that is used to indicated the current selected page
-2. dot_drawable_unselected: Drawable that is used to indicated the unselected pages
-3. dot_height: Height of the Dot indicator in dp
-4. dot_width: Width of the Dot indicator in dp
-5. dot_margin: Marginal spaces between the Dots
+1. `dot_drawable`: Drawable that is used to indicated the current selected page
+2. `dot_drawable_unselected`: Drawable that is used to indicated the unselected pages
+3. `dot_height`: Height of the Dot indicator in dp
+4. `dot_width`: Width of the Dot indicator in dp
+5. `dot_margin`: Marginal spaces between the Dots
 
 ### Kotlin / Java
-DotsIndicator.setViewPager(ViewPager): This attaches the DotsIndicator with the View Pager
+``` kotlin
+// This attaches the DotsIndicator with the ViewPager
+DotsIndicator.setViewPager(ViewPager)
+```
 
 Voila! You have implemented a simple Dots indicator for your View Pager now!
