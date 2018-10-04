@@ -25,7 +25,7 @@ allprojects {
 }
 ```
 
-### [3] Use DotsIndicator in you layout.xml
+### [3] Use DotsIndicator in your layout.xml
 ```xml
 <com.make.dots.dotsindicator.DotsIndicator
     android:id="@+id/dotsIndicator"
