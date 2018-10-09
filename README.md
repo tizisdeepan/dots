@@ -2,7 +2,7 @@
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![](https://jitpack.io/v/tizisdeepan/dots.svg)](https://jitpack.io/#tizisdeepan/dots)
 
-![Screenshot 2](https://github.com/tizisdeepan/dots/raw/master/screenshots/ss1.png)
+![Screenshot 2](https://github.com/tizisdeepan/dots/raw/master/screenshots/ss_gif.gif)
 ## What is Dots?
 Dots is a library that helps in implementing a simple yet effective dots indicator for the View Pagers used in your android code. It combines the usage of observers and state drawables to indicate the current visible page's position in a badass way.
 
