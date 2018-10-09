@@ -62,3 +62,5 @@ DotsIndicator.setViewPager(ViewPager)
 ```
 
 Voila! You have implemented a simple Dots indicator for your View Pager now!
+
+Check out this medium publication: https://medium.com/@tizisdeepan/android-dots-indicator-a093d9dc3f5f
