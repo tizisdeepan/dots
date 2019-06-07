@@ -65,5 +65,17 @@ Voila! You have implemented a simple Dots indicator for your View Pager now!
 
 Check out this medium publication: https://medium.com/@tizisdeepan/android-dots-indicator-a093d9dc3f5f
 
+Developed By
+------------
+
+* Deepan Elango - <tizisdeepan@gmail.com>
+
+<a href="https://twitter.com/tizisdeepan">
+  <img alt="Follow me on Twitter" src="./Screenshots/twitter.png" />
+</a>
+<a href="https://www.linkedin.com/in/tizisdeepan/">
+  <img alt="Add me to Linkedin" src="./Screenshots/linkedin.png" />
+</a>
+
 ## License
 This library falls under [Apache v2](https://github.com/tizisdeepan/dots/blob/master/LICENSE)
